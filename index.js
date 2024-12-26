@@ -2,7 +2,7 @@ import express from "express";
 import Discord, { GatewayIntentBits } from "discord.js";
 import "dotenv/config";
 import mongoose from "mongoose";
-import User from "./models/User";
+import User from "./models/User.js";
 
 const app = express();
 const port = process.env.PORT || 3000;
@@ -81,7 +81,7 @@ client.on("messageCreate", async(message) => {
                 return message.channel.send("You don't have enough points!");
             }
 
-            const targetUser = await User.findOneAndUpdate(
+            await User.findOneAndUpdate(
                 {discordId: userMention.id},
                 {$inc: {score: points/2}, username: userMention.username},
                 {upsert: true, new: true}
