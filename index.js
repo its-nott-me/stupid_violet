@@ -153,7 +153,7 @@ client.on("messageCreate", async (message) => {
             const pendingRequest = new PendingRequest({
                 id: message.id, // message ID
                 type: "points_add",
-                description: `add ${points} points to ${userMention.username}`,
+                description: `add ${points} points to ${userMention.nickname}`,
                 requesterId: message.author.id, // User who is requesting points
                 requesterUsername: message.author.username,
                 requesterNickname: requester.nickname,
