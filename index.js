@@ -297,7 +297,7 @@ client.on("messageCreate", async (message) => {
                 const embed = new EmbedBuilder()
                     .setTitle(`${index + 1}. ${request.description} for ${request.points}`)
                     .setURL(`https://discord.com/channels/${message.guildId}/${message.channelId}/${request.id}`)
-                    .setDescription("Request")
+                    .setDescription("Unapproved Request")
                 list += `${index + 1}. ${request.description}\n`;
                 embeds.push(embed);
             })
@@ -308,7 +308,7 @@ client.on("messageCreate", async (message) => {
                 const embed = new EmbedBuilder()
                     .setTitle(`${index + 1}. ${task.description} for ${task.points}potnts`)
                     .setURL(`https://discord.com/channels/${message.guildId}/${message.channelId}/${task.id}`)
-                    .setDescription("Task")
+                    .setDescription("Unapproved task")
                 list += `${index + 1}. ${task.description}\n`;
                 embeds.push(embed);
             })
@@ -318,7 +318,7 @@ client.on("messageCreate", async (message) => {
                 const embed = new EmbedBuilder()
                     .setTitle(`${index + 1}. ${task.description} for ${task.points}points`)
                     .setURL(`https://discord.com/channels/${message.guildId}/${message.channelId}/${task.id}`)
-                    .setDescription("Task")
+                    .setDescription("Ongoing task")
                 list += `${index + 1}. ${task.description}\n`;
                 embeds.push(embed);
             })
@@ -328,7 +328,7 @@ client.on("messageCreate", async (message) => {
                 const embed = new EmbedBuilder()
                     .setTitle(`${index + 1}. ${task.description} for ${task.points}points`)
                     .setURL(`https://discord.com/channels/${message.guildId}/${message.channelId}/${task.id}`)
-                    .setDescription("Task")
+                    .setDescription("Unreviewed task")
                 list += `${index + 1}. ${task.description}\n`;
                 embeds.push(embed);
             })
