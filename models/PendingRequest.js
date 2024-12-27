@@ -5,8 +5,10 @@ const pendingRequestSchema = new mongoose.Schema({
     type: { type: String, required: true }, // "points_add", "task_do", "task_edit", "task_new"
     requesterId: { type: String, required: true },
     requesterUsername: { type: String, required: true },
+    requesterNickname: { type: String },
     approverId: { type: String },
     approverUsername: { type: String },
+    approverNickname: { type: String },
     points: { type: Number, required: true },
     description: { type: String }, // Only for "do" and "add/edit task" requests
     status: { type: String, default: "pending" }, // "pending", "approved", "rejected"

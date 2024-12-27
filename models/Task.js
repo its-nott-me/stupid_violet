@@ -8,8 +8,10 @@ const taskSchema = new mongoose.Schema({
     description: { type: String },
     requesterId: { type: String, required: true },
     requesterUsername: { type: String, required: true },
+    requesterNickname: { type: String },
     approverId: { type: String, required: true },
     approverUsername: { type: String, required: true },
+    approverNickname: { type: String },
     status: { type: String, default: "pending" }, // "pending", "approved", "rejected"
     points: { type: Number, required: true }, 
     createdAt: { type: Date, default: Date.now },
