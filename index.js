@@ -373,7 +373,7 @@ client.on("messageCreate", async (message) => {
             // Ensure the approver is not the requester
             if (request.requesterId === message.author.id && request.type !== "task_do") {
                 // You cannot approve your own request.
-                return message.channel.send("...(*￣０￣)ノ You are not worthy");
+                return message.channel.send("...(*￣０￣)ノ You are not worthy...\n⚠Approval needed from another user\nYou cannot approve or reject your own requests.");
             } else if (message.content.toLowerCase() === "yes") {
                 if (request.type === "points_add") {
                     await User.findOneAndUpdate(
@@ -514,7 +514,7 @@ client.on("messageCreate", async (message) => {
             {
                 name: "Add points to a user",
                 command: "/add <@user> <points>",
-                // description: "Message reference not needed",
+                description: "⚠Approval needed from a user\nYou cannot approve or reject your own requests.",
             },
             {
                 name: "View Scoreboard",
@@ -529,17 +529,17 @@ client.on("messageCreate", async (message) => {
             {
                 name: "Create a new task",
                 command: "/createtask",
-                // description: "Message reference not needed",
+                description: "⚠Approval needed from a user\nYou cannot approve or reject your own requests.",
             },
             {
                 name: "Edit a task",
                 command: "/edittask <task ID> <new task description> <new points>",
-                // description: "Message reference not needed",
+                description: "⚠Approval needed from a user\nYou cannot approve or reject your own requests.",
             },
             {
                 name: "Want someone to do a task ❓",
                 command: "/do <@user> <points> <taskId>",
-                // description: "Message reference not needed",
+                description: "⚠Approval needed from the victim user.",
             },
             {
                 name: "View pending tasks and requests",
@@ -554,17 +554,17 @@ client.on("messageCreate", async (message) => {
             {
                 name: "Completed a task❓",
                 command: "/taskcompleted",
-                description: "⚠Reply to the TASK message",
+                description: "⚠Reply to the TASK message...\n⚠Approval needed from a user\nYou cannot approve or reject your own requests.",
             },
             {
                 name: "Approve request or task",
                 command: "`yes`",
-                description: "⚠Reply to the bot approval message",
+                description: "⚠Reply to the bot approval message... you cannot approve your own requests",
             },
             {
                 name: "Reject a request or task",
                 command: "`no`",
-                description: "⚠Reply to the bot approval message",
+                description: "⚠Reply to the bot approval message... you cannot reject your own requests",
             },
         ]
 
@@ -577,8 +577,20 @@ client.on("messageCreate", async (message) => {
         message.channel.send(text);
     }
 
-    if (message.content === "stfu") {
+    if (message.content.toLowerCase().includes("stfu")) {
         message.channel.send("Nahi 🙂");
+    }
+
+    if (message.content.toLowerCase().includes("hatt")) {
+        message.reply("tu hatt");
+    }
+
+    if (message.content.toLowerCase().includes("pakora")) {
+        message.reply("rajma chaawal")
+    }
+
+    if (message.content.toLowerCase().includes("srcc")) {
+        message.reply("milega fr");
     }
 });
 
