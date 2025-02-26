@@ -157,6 +157,7 @@ client.on("messageCreate", async (message) => {
                 requesterId: message.author.id, // User who is requesting points
                 requesterUsername: message.author.username,
                 requesterNickname: requester.nickname,
+                receiverId: mentionedUserEntry.discordId, // User who is receiving points
                 approverId: null,  // set approver later while processing
                 approverUsername: null,
                 approverNickname: null,
@@ -377,13 +378,13 @@ client.on("messageCreate", async (message) => {
             } else if (message.content.toLowerCase() === "yes") {
                 if (request.type === "points_add") {
                     await User.findOneAndUpdate(
-                        { discordId: request.requesterId },
+                        { discordId: request.receiverId },
                         { $inc: { score: request.points } },
                         { new: true, upsert: true }
                     );
 
                     message.channel.send(
-                        `I, ${messageAuthor.nickname} approves your request.. ${request.requesterNickname} `
+                        `I, ${messageAuthor.nickname} approves your request.. ${request.requesterNickname}`
                     );
 
                     // display the scoreboard
@@ -462,7 +463,7 @@ client.on("messageCreate", async (message) => {
             }
         } catch (err) {
             console.error(err);
-            message.channel.send("An error occurred while processing the request.");
+            message.channel.send("Kyaa");
         }
     }
 

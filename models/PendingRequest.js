@@ -6,6 +6,7 @@ const pendingRequestSchema = new mongoose.Schema({
     requesterId: { type: String, required: true },
     requesterUsername: { type: String, required: true },
     requesterNickname: { type: String },
+    receiverId: { type: String, required: true },
     approverId: { type: String },
     approverUsername: { type: String },
     approverNickname: { type: String },
